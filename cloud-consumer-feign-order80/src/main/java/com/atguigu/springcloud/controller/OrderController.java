@@ -17,7 +17,7 @@ public class OrderController {
     @Autowired
     PaymentFeignService paymentFeignService;
 
-    @RequestMapping("/consumer2/get/{id}")
+    @RequestMapping("/consumer/get/{id}")
     public ComResult getById(@PathVariable("id") Long id) {
         return paymentFeignService.getById(id);
     }
