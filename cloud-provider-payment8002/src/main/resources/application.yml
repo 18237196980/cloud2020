@@ -23,5 +23,6 @@ eureka:
     service-url:
       # defaultZone: http://localhost:7001/eureka # 单机注册到eureka
       defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka # 单机注册到eureka
-
+  instance:
+    instance-id: payment8002
 
