@@ -1,0 +1,29 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-hystrix-service
+
+eureka:
+  client:
+    register-with-euraka: true
+    fetchRegistry: true
+    service-url:
+      # defaultZone: http://localhost:7001/eureka # 单机注册到eureka
+      defaultZone: http://eureka7001.com:7001/eureka # 单机注册到eureka
+
+# 设置feign客户端超时时间（openFeign默认支持ribbon）
+ribbon:
+  ReadTimeout: 5000 # 从服务器读取到资源所用的时间（服务端处理时长超过5s就报错）
+  ConnectTimeout: 5000 # 建立连接所用的时间
+
+
+#openFeign打印接口调用情况的日志
+logging:
+  level:
+    com.atguigu.springcloud.service.PaymentFeignService: debug
+
+feign:
+  hystrix:
+    enabled: true

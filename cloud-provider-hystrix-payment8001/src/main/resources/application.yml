@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: cloud-payment-service
+    name: cloud-payment-hystrix-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
     url: jdbc:mysql://localhost:3306/cloud?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&serverTimezone=UTC
@@ -24,7 +24,7 @@ eureka:
     fetchRegistry: true
     service-url:
       # defaultZone: http://localhost:7001/eureka # 单机注册到eureka
-      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka # 单机注册到eureka
+      defaultZone: http://eureka7001.com:7001/eureka # 单机注册到eureka
   instance:
-    instance-id: payment8001
+    instance-id: payment8001-hystrix
 

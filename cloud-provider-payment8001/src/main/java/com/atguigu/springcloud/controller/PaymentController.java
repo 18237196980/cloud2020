@@ -2,7 +2,6 @@ package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.common.ComResult;
 import com.atguigu.springcloud.service.PaymentService;
-import com.netflix.appinfo.InstanceInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +28,19 @@ public class PaymentController {
     @Resource
     DiscoveryClient discoveryClient;
 
+    @RequestMapping("/pay/getSleep/{id}")
+    public ComResult getSleep(@PathVariable("id") Long id) {
+        /*try {
+            log.info("并发请求---:" + Thread.currentThread().getName());
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+        log.info("并发请求---:" + Thread.currentThread()
+                                    .getName());
+        return new ComResult(200, "查询成功: " + id);
+    }
+
     @RequestMapping("/pay/get/{id}")
     public ComResult getById(@PathVariable("id") Long id) {
         Map<String, Object> payment = paymentService.getById(id);
@@ -40,7 +52,7 @@ public class PaymentController {
 
         List<String> services = discoveryClient.getServices();
         for (String service : services) {
-            log.info("hservice:"+service);
+            log.info("hservice:" + service);
         }
 
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
