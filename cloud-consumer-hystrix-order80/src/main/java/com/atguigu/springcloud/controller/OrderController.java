@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-// @DefaultProperties(defaultFallback = "backMethod")
+// @DefaultProperties(defaultFallback = "backMethod") // 全局Fallback
 public class OrderController {
 
     @Autowired

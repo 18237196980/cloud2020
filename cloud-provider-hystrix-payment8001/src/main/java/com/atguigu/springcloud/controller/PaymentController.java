@@ -27,4 +27,9 @@ public class PaymentController {
         return paymentService.getPaymentOK(id);
     }
 
+    @RequestMapping("/pay/getPaymentBreak/{id}")
+    public ComResult getPaymentBreak(@PathVariable("id") Long id) {
+        return paymentService.getPaymentBreak(id);
+    }
+
 }

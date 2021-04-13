@@ -1,0 +1,25 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      routes: # 路由可以有多个
+        - id: service-router1 # 我们⾃定义的路由 ID，保持唯⼀
+          uri: http://localhost:8001
+          predicates: #断⾔：
+            - Path=/pay/get/**
+            - After=2019-12-25T14:33:47.789+08:00 #什么时间之后才可访问 http://localhost:9527/pay/get/1
+
+eureka:
+  client:
+    register-with-euraka: true
+    fetchRegistry: true
+    service-url:
+      # defaultZone: http://localhost:7001/eureka # 单机注册到eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    hostname: cloud-gateway9527-service
+
